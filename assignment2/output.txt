@@ -1,0 +1,9 @@
+Parent process waiting for child...
+Child process sorting...
+Child process sorted array:
+5 6 7 11 12 13 
+Child process exiting.
+Parent process sorting...
+Parent process sorted array:
+13 12 11 7 6 5 
+Parent process exiting.
