@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <windows.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -49,6 +50,7 @@ int main() {
     } else if (pid == 0) {
         // Child process
         printf("Child process sorting...\n");
+        printf("Child process PID: %d \n",  getpid());
         selectionSort(arr, n);
         printf("Child process sorted array:\n");
         for (int i = 0; i < n; i++) {
@@ -59,12 +61,13 @@ int main() {
         exit(0);
     } else {
         // Parent process
-        printf("Parent process waiting for child...\n");
+        printf("Parent process waiting for child...\n\n");
         int status;
         waitpid(pid, &status, 0);  // Wait for the child process to complete
 
         // Sorting in parent process using a different algorithm (Selection Sort Descending here)
-        printf("Parent process sorting...\n");
+        printf("\nParent process sorting...\n");
+        printf("Parent process PID: %d \n", getpid());
         selectionSortDesc(arr, n);
         printf("Parent process sorted array:\n");
         for (int i = 0; i < n; i++) {
